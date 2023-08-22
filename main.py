@@ -26,10 +26,10 @@ def main():
     st.header("Budget Planner 💸 ")
 
     # # Configure OpenAI API
-    openai.api_type = os.getenv("OPENAI_API_TYPE")
-    openai.api_version = os.getenv("OPENAI_API_VERSION")
-    openai.api_base = os.getenv('OPENAI_API_BASE')
-    openai.api_key = os.getenv("OPENAI_API_KEY")
+    openai.api_type = st.secrets["OPENAI_API_TYPE"]
+    openai.api_version = st.secrets["OPENAI_API_VERSION"]
+    openai.api_base = st.secrets['OPENAI_API_BASE']
+    openai.api_key = st.secrets["OPENAI_API_KEY"]
 
     if 'vms' not in st.session_state:
         st.session_state.vms = []
