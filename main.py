@@ -16,7 +16,7 @@ def main():
 
     # # Configure OpenAI API
     openai.api_type = st.secrets["OPENAI_API_TYPE"]
-    openai.api_version = st.secrets["OPENAI_API_VERSION"]
+    openai.api_version = st.secrets["OPENAI_DEPLOYMENT_VERSION"]
     openai.api_base = st.secrets['OPENAI_API_BASE']
     openai.api_key = st.secrets["OPENAI_API_KEY"]
 
@@ -237,11 +237,11 @@ def main():
 
         final_prompt = prompt.format(app_requirements=app_requirements, cloud_provider=cloud_provider)
 
-        llm = AzureChatOpenAI(deployment_name=OPENAI_DEPLOYMENT_NAME,
-                              model_name=OPENAI_MODEL_NAME,
-                              openai_api_base=OPENAI_DEPLOYMENT_ENDPOINT,
-                              openai_api_version=OPENAI_DEPLOYMENT_VERSION,
-                              openai_api_key=OPENAI_API_KEY,
+        llm = AzureChatOpenAI(deployment_name=st.secrets["OPENAI_DEPLOYMENT_NAME"],
+                              model_name=st.secrets["OPENAI_MODEL_NAME"],
+                              openai_api_base=st.secrets["OPENAI_DEPLOYMENT_ENDPOINT"],
+                              openai_api_version=st.secrets["OPENAI_DEPLOYMENT_VERSION"],
+                              openai_api_key=st.secrets["OPENAI_API_KEY"],
                               openai_api_type="azure")
 
         with get_openai_callback() as call_back:
