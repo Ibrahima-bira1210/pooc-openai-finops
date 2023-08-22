@@ -5,20 +5,9 @@ from streamlit_modal import Modal
 import streamlit.components.v1 as components
 import os
 import openai
-from dotenv import load_dotenv
 from langchain.chat_models import AzureChatOpenAI
 from langchain.schema import HumanMessage
 from tabulate import tabulate
-
-from azure.identity import DefaultAzureCredential
-from azure.keyvault.secrets import SecretClient
-
-load_dotenv()
-OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
-OPENAI_DEPLOYMENT_ENDPOINT = os.getenv("OPENAI_DEPLOYMENT_ENDPOINT")
-OPENAI_DEPLOYMENT_NAME = os.getenv("OPENAI_DEPLOYMENT_NAME")
-OPENAI_MODEL_NAME = os.getenv("OPENAI_MODEL_NAME")
-OPENAI_DEPLOYMENT_VERSION = os.getenv("OPENAI_DEPLOYMENT_VERSION")
 
 
 def main():
