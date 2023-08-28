@@ -121,7 +121,7 @@ def main():
 
     txt = st.text_area(height=10, label='Add other type of resource')
 
-    template = ''' As a FinOps Practitioner at Carrefour, your role is to manage the financial operations related to cloud usage.
+    template = f''' As a FinOps Practitioner at Carrefour, your role is to manage the financial operations related to cloud usage.
             Currently, various teams within Carrefour are developing a cloud-based application and seek your expertise to create a budget for it.
             For this project, the chosen cloud provider is {cloud_provider}. 
             They have provided detailed information about the app's required resources, which include Virtual Machines and persistent disks.
@@ -166,6 +166,15 @@ def main():
            REC	Base de données reporting	        8	    32	     300	    D8s_v3	      €0.37	        €111	    €290
            PRF	Base de données reporting	        32	    64	     300	    F32s_v3	      €1.23	        €369	    €0
            PRD	Base de données reporting	        32	    64	     730	    F32s_v3	      €1.23	        €898	    €343
+           
+           it's important to understand the difference between VCPU and Core in the CPU column. That is crucial to calculate the VM Gabarit.
+              For example, the VM Gabarit for the VM "Base de données transactionnelle" is D8s_v3, which has 8 Vcpu.
+              
+          A VCPU (Virtual Central Processing Unit) represents a share or a slice of a physical CPU that is assigned to a virtual machine (VM).
+          It's a way of sharing the resources of a physical CPU among multiple VMs.  
+         On the other hand, a Core represents a physical CPU on the host machine. Each Core can run one or more threads, depending on the technology of the CPU.  
+           In the context of our app, the VM Gabarit column refers to the configuration of the virtual machine, including the number of VCPUs
+             and the amount of RAM. The VM Gabarit is a suggestion from the {cloud_provider}'s VM templates, considering CPU and RAM.
 
            for the Disk table, the columns are: ENV          VM            Disk size(Go)        Disk type     Cost
 
@@ -256,3 +265,9 @@ def main():
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
     main()
+
+
+
+
+
+
