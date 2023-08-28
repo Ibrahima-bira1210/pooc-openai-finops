@@ -121,7 +121,7 @@ def main():
 
     txt = st.text_area(height=10, label='Add other type of resource')
 
-    template = f''' As a FinOps Practitioner at Carrefour, your role is to manage the financial operations related to cloud usage.
+    template = ''' As a FinOps Practitioner at Carrefour, your role is to manage the financial operations related to cloud usage.
             Currently, various teams within Carrefour are developing a cloud-based application and seek your expertise to create a budget for it.
             For this project, the chosen cloud provider is {cloud_provider}. 
             They have provided detailed information about the app's required resources, which include Virtual Machines and persistent disks.
