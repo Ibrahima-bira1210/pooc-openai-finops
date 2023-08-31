@@ -41,11 +41,11 @@ def main():
             modal_vm.open()
         st.dataframe(st.session_state.vms)
 
-        modal_backup = Modal(key="backup", title="Backup")
-        open_modal_backup = st.button("Add Backup")
-        if open_modal_backup:
-            modal_backup.open()
-        st.dataframe(st.session_state.backup)
+        # modal_backup = Modal(key="backup", title="Backup")
+        # open_modal_backup = st.button("Add Backup")
+        # if open_modal_backup:
+        #     modal_backup.open()
+        # st.dataframe(st.session_state.backup)
 
     with col2:
         modal_disk = Modal(key="disk", title="Disk")
@@ -54,11 +54,11 @@ def main():
             modal_disk.open()
         st.dataframe(st.session_state.disks)
 
-        modal_paasDB = Modal(key="paasDB", title="PaaS DB")
-        open_modal_paasDB = st.button("Add PaaS DB")
-        if open_modal_paasDB:
-            modal_paasDB.open()
-        st.dataframe(st.session_state.paasDB)
+        # modal_paasDB = Modal(key="paasDB", title="PaaS DB")
+        # open_modal_paasDB = st.button("Add PaaS DB")
+        # if open_modal_paasDB:
+        #     modal_paasDB.open()
+        # st.dataframe(st.session_state.paasDB)
 
     if modal_vm.is_open():
         with modal_vm.container():
@@ -89,35 +89,35 @@ def main():
                         {"env_disk": env_disk, "VM_attached": VM_attached, "Disk_Size": Disk_Size,
                          "Disk_type": Disk_type})
 
-    if modal_backup.is_open():
-        with modal_backup.container():
-            st.write("Add Backup")
-            with st.form('Add new Backup'):
-                VM_to_backup = st.selectbox("VM To backup", [vm["VM_Name"] for vm in st.session_state.vms])
-                Backup_Size = st.number_input("Backup Size", min_value=1)
-                Backup_type = st.text_input("Backup Type")
-                submit_backup = st.form_submit_button("Submit")
-                if submit_backup:
-                    st.session_state.backup.append(
-                        {"VM_to_backup": VM_to_backup, "Backup_Size": Backup_Size,
-                         "Backup_type": Backup_type})
-
-    if modal_paasDB.is_open():
-        with modal_paasDB.container():
-            st.write("Add PaaS DB")
-            with st.form('Add new PaaS DB'):
-                env_paasDB = st.selectbox('Environment', ['DEV', 'PRF', 'PROD'])
-                DB_Name = st.text_input("DB Name")
-                DB_type = st.selectbox("DB Type", [
-                    "Azure Database for PostgreSQL flexible servers",
-                    "Azure Database for PostgreSQL servers", "Azure Database for MySQL servers"
-                    , "Azure SQL Database", "Azure SQL Managed Instance ", "Azure Database for MySQL flexible servers"])
-                DB_Size = st.number_input("DB Size", min_value=1)
-                submit_paasDB = st.form_submit_button("Submit")
-                if submit_paasDB:
-                    st.session_state.paasDB.append(
-                        {"env_paasDB": env_paasDB, "DB_Name": DB_Name, "DB_Size": DB_Size,
-                         "DB_type": DB_type})
+    # if modal_backup.is_open():
+    #     with modal_backup.container():
+    #         st.write("Add Backup")
+    #         with st.form('Add new Backup'):
+    #             VM_to_backup = st.selectbox("VM To backup", [vm["VM_Name"] for vm in st.session_state.vms])
+    #             Backup_Size = st.number_input("Backup Size", min_value=1)
+    #             Backup_type = st.text_input("Backup Type")
+    #             submit_backup = st.form_submit_button("Submit")
+    #             if submit_backup:
+    #                 st.session_state.backup.append(
+    #                     {"VM_to_backup": VM_to_backup, "Backup_Size": Backup_Size,
+    #                      "Backup_type": Backup_type})
+    #
+    # if modal_paasDB.is_open():
+    #     with modal_paasDB.container():
+    #         st.write("Add PaaS DB")
+    #         with st.form('Add new PaaS DB'):
+    #             env_paasDB = st.selectbox('Environment', ['DEV', 'PRF', 'PROD'])
+    #             DB_Name = st.text_input("DB Name")
+    #             DB_type = st.selectbox("DB Type", [
+    #                 "Azure Database for PostgreSQL flexible servers",
+    #                 "Azure Database for PostgreSQL servers", "Azure Database for MySQL servers"
+    #                 , "Azure SQL Database", "Azure SQL Managed Instance ", "Azure Database for MySQL flexible servers"])
+    #             DB_Size = st.number_input("DB Size", min_value=1)
+    #             submit_paasDB = st.form_submit_button("Submit")
+    #             if submit_paasDB:
+    #                 st.session_state.paasDB.append(
+    #                     {"env_paasDB": env_paasDB, "DB_Name": DB_Name, "DB_Size": DB_Size,
+    #                      "DB_type": DB_type})
 
     txt = st.text_area(height=10, label='Add other type of resource')
 
